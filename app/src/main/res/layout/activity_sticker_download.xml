@@ -6,6 +6,16 @@
     android:orientation="vertical">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="RecyclerView-Animation"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:background="@color/pink"/>
+
     <com.ogaclejapan.smarttablayout.SmartTabLayout
         android:id="@+id/viewpagertab"
         android:layout_width="match_parent"
@@ -22,7 +32,7 @@
         app:stl_indicatorColor="@color/black_20"
         app:stl_indicatorCornerRadius="12dp"
         app:stl_indicatorInterpolation="smart"
-        app:stl_indicatorThickness="30dp"
+        app:stl_indicatorThickness="28dp"
         app:stl_underlineColor="@color/transparent"
         app:stl_underlineThickness="0dp"
         />

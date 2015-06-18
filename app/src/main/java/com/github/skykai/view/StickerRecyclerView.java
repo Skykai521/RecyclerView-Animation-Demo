@@ -121,7 +121,7 @@ public class StickerRecyclerView extends RecyclerView {
                         float finalRadius = hypo(myView.getWidth(), myView.getHeight());
                         mAnimator = ViewAnimationUtils.createCircularReveal(myView, cx, cy, 0, finalRadius);
                         mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-                        mAnimator.setDuration(500);
+                        mAnimator.setDuration(600);
                         mAnimator.start();
 
                 }
