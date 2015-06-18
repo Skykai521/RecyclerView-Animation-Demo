@@ -1,4 +1,4 @@
-package com.github.skykai;
+package com.github.skykai.view;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -13,6 +13,10 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.github.skykai.R;
+import com.github.skykai.model.StickerItem;
+import com.github.skykai.util.Utils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.Random;
@@ -23,20 +27,20 @@ import io.codetail.widget.RevealFrameLayout;
 /**
  * Created by sky on 2015/6/11.
  */
-public class ChartletRecyclerView extends RecyclerView {
+public class StickerRecyclerView extends RecyclerView {
 
     private static final long[] delayList = {400, 500, 600, 700, 800, 900};
 
     private Context mContext;
-    private ArrayList<ChartletItem> mChartList;
-    private ChartletAdapter chartletAdapter;
+    private ArrayList<StickerItem> mStickerList;
+    private StickerAdapter stickerAdapter;
     private SupportAnimator mAnimator;
 
 
-    public ChartletRecyclerView(Context context, ArrayList<ChartletItem> chartList) {
+    public StickerRecyclerView(Context context, ArrayList<StickerItem> chartList) {
         super(context);
         this.mContext = context;
-        this.mChartList = chartList;
+        this.mStickerList = chartList;
 
         init();
 
@@ -44,18 +48,18 @@ public class ChartletRecyclerView extends RecyclerView {
 
     private void init() {
         setLayoutManager(new GridLayoutManager(mContext, 3));
-        chartletAdapter = new ChartletAdapter();
-        chartletAdapter.setList(mChartList);
-        setAdapter(chartletAdapter);
+        stickerAdapter = new StickerAdapter();
+        stickerAdapter.setList(mStickerList);
+        setAdapter(stickerAdapter);
     }
 
 
-    private class ChartletAdapter extends RecyclerView.Adapter<ViewHolder> {
+    private class StickerAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-        private ArrayList<ChartletItem> items = new ArrayList<ChartletItem>();
+        private ArrayList<StickerItem> items = new ArrayList<StickerItem>();
         private int lastPosition = -1;
 
-        public void setList(ArrayList<ChartletItem> list) {
+        public void setList(ArrayList<StickerItem> list) {
             if (items.size() > 0) {
                 items.clear();
             }
@@ -93,30 +97,25 @@ public class ChartletRecyclerView extends RecyclerView {
             }
         }
 
-        @Override
-        public void onViewDetachedFromWindow(ViewHolder holder) {
-            super.onViewDetachedFromWindow(holder);
-        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_chartlet, viewGroup, false);
+            View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_sticker, viewGroup, false);
             return new ViewHolder(v);
         }
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
 
-            final ChartletItem chartletItem = items.get(position);
-            ImageLoader.getInstance().displayImage(chartletItem.getThumbnail2(), holder.chartlet
-                    , DisplayImageOptionsUtils.buildDefaultOptionsUserface());
+            final StickerItem stickerItem = items.get(position);
+            ImageLoader.getInstance().displayImage(stickerItem.getThumbnail2(), holder.chartlet
+                    , Utils.getInst().buildDefaultOptions());
             holder.download.setText("下载");
             holder.download.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(final View v) {
 
                         final View myView = holder.card;
-                        //----动画效果
                         int cx = (myView.getLeft() + myView.getRight()) / 2;
                         int cy = (myView.getTop() + myView.getBottom()) / 2;
                         float finalRadius = hypo(myView.getWidth(), myView.getHeight());
@@ -124,7 +123,6 @@ public class ChartletRecyclerView extends RecyclerView {
                         mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
                         mAnimator.setDuration(500);
                         mAnimator.start();
-                        //----动画效果
 
                 }
             });

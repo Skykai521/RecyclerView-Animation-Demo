@@ -1,4 +1,4 @@
-package com.github.skykai;
+package com.github.skykai.model;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 贴图Item
  * Created by sky on 2015/6/10.
  */
-public class ChartletItem implements Comparable<ChartletItem>,Serializable {
+public class StickerItem implements Comparable<StickerItem> {
 
     /**
      * usenum : 75
@@ -133,7 +133,7 @@ public class ChartletItem implements Comparable<ChartletItem>,Serializable {
 
 
     @Override
-    public int compareTo(ChartletItem another) {
+    public int compareTo(StickerItem another) {
 
         if (dbid == another.getDbid()) {
             return 0;
@@ -151,9 +151,9 @@ public class ChartletItem implements Comparable<ChartletItem>,Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || !(o instanceof ChartletItem)) {
+        if (o == null || !(o instanceof StickerItem)) {
             return false;
         }
-        return id.equals(((ChartletItem) o).getId());
+        return id.equals(((StickerItem) o).getId());
     }
 }

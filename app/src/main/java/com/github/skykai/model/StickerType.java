@@ -1,4 +1,4 @@
-package com.github.skykai;
+package com.github.skykai.model;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 贴图类型
  * Created by sky on 2015/6/10.
  */
-public class ChartletType implements Serializable {
+public class StickerType {
     /**
      * id : 0
      * type : 全部

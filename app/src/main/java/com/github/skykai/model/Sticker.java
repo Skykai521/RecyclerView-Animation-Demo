@@ -1,6 +1,5 @@
-package com.github.skykai;
+package com.github.skykai.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,8 +9,8 @@ public class Sticker {
 
 
     private String state;
-    private List<ChartletItem> commonlist;
-    private List<ChartletType> typelist;
+    private List<StickerItem> commonlist;
+    private List<StickerType> typelist;
 
     public String getState() {
         return state;
@@ -21,19 +20,19 @@ public class Sticker {
         this.state = state;
     }
 
-    public List<ChartletItem> getCommonlist() {
+    public List<StickerItem> getCommonlist() {
         return commonlist;
     }
 
-    public void setCommonlist(List<ChartletItem> commonlist) {
+    public void setCommonlist(List<StickerItem> commonlist) {
         this.commonlist = commonlist;
     }
 
-    public List<ChartletType> getTypelist() {
+    public List<StickerType> getTypelist() {
         return typelist;
     }
 
-    public void setTypelist(List<ChartletType> typelist) {
+    public void setTypelist(List<StickerType> typelist) {
         this.typelist = typelist;
     }
 }
